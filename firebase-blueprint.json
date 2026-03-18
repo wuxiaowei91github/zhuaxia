@@ -1,0 +1,84 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "User profile information",
+      "type": "object",
+      "properties": {
+        "username": {
+          "type": "string",
+          "description": "The user's display name"
+        },
+        "avatar": {
+          "type": "string",
+          "description": "The user's avatar URL"
+        },
+        "balance": {
+          "type": "number",
+          "description": "The user's balance"
+        }
+      },
+      "required": ["username", "avatar", "balance"]
+    },
+    "Lobster": {
+      "title": "Lobster",
+      "description": "Lobster asset information",
+      "type": "object",
+      "properties": {
+        "serialNumber": {
+          "type": "string",
+          "description": "The lobster's unique serial number"
+        },
+        "rarity": {
+          "type": "string",
+          "enum": ["common", "rare", "legendary"],
+          "description": "The lobster's rarity"
+        },
+        "name": {
+          "type": "string",
+          "description": "The lobster's name"
+        },
+        "stage": {
+          "type": "string",
+          "enum": ["mini", "small", "large", "super"],
+          "description": "The lobster's growth stage"
+        },
+        "growthValue": {
+          "type": "number",
+          "description": "The lobster's growth value"
+        },
+        "health": {
+          "type": "number",
+          "description": "The lobster's health"
+        },
+        "energy": {
+          "type": "number",
+          "description": "The lobster's energy"
+        },
+        "imageUrl": {
+          "type": "string",
+          "description": "The lobster's image URL"
+        },
+        "ownerId": {
+          "type": "string",
+          "description": "The ID of the user who owns the lobster"
+        },
+        "birthDate": {
+          "type": "string",
+          "description": "The date the lobster was born"
+        }
+      },
+      "required": ["serialNumber", "rarity", "name", "stage", "growthValue", "health", "energy", "imageUrl", "ownerId", "birthDate"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "User profile collection"
+    },
+    "/lobsters/{lobsterId}": {
+      "schema": "Lobster",
+      "description": "Lobster collection"
+    }
+  }
+}
